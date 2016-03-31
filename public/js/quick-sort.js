@@ -1,8 +1,29 @@
 function quickSort (arr) {
 
-}
+  if (arr.length === 0) {
+    
+    return [];
+  }
 
+  var pivot = arr[0];
+  var left = [];
+  var right = [];
 
+  for (var i = 1; i < arr.length; i++) {
 
-var testArr = [2, 4, 1, 3, 6, 5, 8, 7, 10, 9];
-quickSort(testArr);
+    if (arr[i] <= pivot) {
+
+      left.push(arr[i]);
+    }
+    else {
+
+      right.push(arr[i]);
+    }
+  }
+
+  return  quickSort(left).concat(pivot, quickSort(right));
+
+};
+
+var testArr = [4, 2, 1, 3, 6, 5, 8, 7, 10, 9];
+console.log(quickSort(testArr));
